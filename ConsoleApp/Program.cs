@@ -4,6 +4,7 @@ using SamuraiApp.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace ConsoleApp
 {
@@ -12,7 +13,8 @@ namespace ConsoleApp
         private static SamuraiContext context = new SamuraiContext();
 
         static void Main(string[] args)
-        {            
+        {
+            QuerySamuraiBattleStats();
         }
 
         private static void InsertMultipleSamurais()
@@ -158,6 +160,9 @@ namespace ConsoleApp
                                                     .Include(s => s.Quotes).FirstOrDefault();            
         }        
 
-
+        private static void QuerySamuraiBattleStats()
+        {
+             var stats = context.SamuraiBattleStats.ToList();            
+        }
     }
 }
